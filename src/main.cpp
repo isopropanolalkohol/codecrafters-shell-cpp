@@ -20,21 +20,32 @@ int main() {
     std::string input;
     std::getline(std::cin, input);
     std::vector<std::string> args = tokenize(input);
-    bool valid_command = false;
+    int command_index = -1;
     for (int i = 0; i < valid_commands.size(); i++)
     {
       if (valid_commands[i].name == args[0])
       {
-        valid_command = true;
+        command_index = i;
+        break;
       }
     }
-    if (args[0] == "exit")
-    {
-      run = false;
-    }
-    if (!valid_command)
+    if (command_index == -1)
     {
       std::cout << args[0] << ": " << "command not found" << std::endl;
+    }
+    else
+    {
+      switch (valid_commands[command_index].exec(args))
+      {
+        case EXIT:
+          run = false;
+          break;
+        case SUCCESS:
+          break;
+        case ERROR:
+          std::cout << "Error occurred" << std::endl;
+          break;
+      }
     }
   }
 }
