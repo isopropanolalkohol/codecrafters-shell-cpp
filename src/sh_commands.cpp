@@ -8,6 +8,8 @@ COMMAND_RESULT cmd_exit(std::vector<std::string> args)
 }
 command sh_exit("exit", cmd_exit);
 
+
+
 COMMAND_RESULT cmd_echo(std::vector<std::string> args)
 {
   for (int i = 1; i < args.size(); i++)
@@ -19,10 +21,29 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
 }
 command sh_echo("echo", cmd_echo);
 
+
+
+COMMAND_RESULT cmd_type(std::vector<std::string> args)
+{
+  std::vector<command> commands = load_commands();
+  for (int i = 0; i < commands.size(); i++)
+  {
+    if (commands[i].name == args[1])
+    {
+      std::cout << args[1] << " is a shell builtin." << std::endl;
+      return SUCCESS;
+    }
+  }
+  std::cout << args[1] << ": not found." << std::endl;
+  return SUCCESS;
+}
+command sh_type("type", cmd_type);
+
 std::vector<command> load_commands()
 {
     std::vector<command> commands;
     commands.push_back(sh_exit);
     commands.push_back(sh_echo);
+    commands.push_back(sh_type);
     return commands;
 }
