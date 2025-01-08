@@ -25,13 +25,29 @@ command sh_echo("echo", cmd_echo);
 
 COMMAND_RESULT cmd_type(std::vector<std::string> args)
 {
-  std::vector<command> commands = load_commands();
-  for (int i = 0; i < commands.size(); i++)
+  const char* env_p = std::getenv("PATH");
+  std::string current_path = "";
+  std::string current_dir_name = "";
+  for (int i = 0; env_p[i] != '\0'; i++)
   {
-    if (commands[i].name == args[1])
+    switch (env_p[i])
     {
-      std::cout << args[1] << " is a shell builtin" << std::endl;
-      return SUCCESS;
+      case '/':
+        current_dir_name = "";
+        current_path += env_p[i];
+        break;
+      case ':':
+         current_dir_name = "";
+         current_path = "";
+         break;
+      default:
+        current_path += env_p[i];
+        current_dir_name += env_p[i];
+        if (current_dir_name == args[1] && env_p[i+1] == ':')
+        {
+          std::cout << args[1] << " is " << current_path << std::endl;
+          return SUCCESS;
+        }
     }
   }
   std::cout << args[1] << ": not found" << std::endl;
