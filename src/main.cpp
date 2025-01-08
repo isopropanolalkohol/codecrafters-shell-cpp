@@ -8,20 +8,23 @@ int main() {
 
   std::vector<command> valid_commands = load_commands();
 
-  std::cout << "$ ";
+  while (true)
+  {
+    std::cout << "$ ";
 
-  std::string input;
-  std::getline(std::cin, input);
-  bool valid_command = false;
-  for (int i = 0; i < valid_commands.size(); i++)
-  {
-    if (valid_commands[i].name == input)
+    std::string input;
+    std::getline(std::cin, input);
+    bool valid_command = false;
+    for (int i = 0; i < valid_commands.size(); i++)
     {
-      valid_command = true;
+      if (valid_commands[i].name == input)
+      {
+        valid_command = true;
+      }
     }
-  }
-  if (!valid_command)
-  {
-    std::cerr << input << ": " << "command not found" << std::endl;
+    if (!valid_command)
+    {
+      std::cerr << input << ": " << "command not found" << std::endl;
+    }
   }
 }
