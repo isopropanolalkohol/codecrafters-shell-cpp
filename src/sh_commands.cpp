@@ -25,7 +25,7 @@ command sh_echo("echo", cmd_echo);
 
 COMMAND_RESULT cmd_type(std::vector<std::string> args)
 {
-  const char* env_p = std::getenv("PATH");
+  std::string env_p = std::getenv("PATH");
   std::string current_path = "";
   std::string current_dir_name = "";
   for (int i = 0; env_p[i] != '\0'; i++)

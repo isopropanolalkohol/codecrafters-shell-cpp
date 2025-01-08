@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     std::string input;
     std::getline(std::cin, input);
     std::vector<std::string> args = tokenize(input);
-    std::cout << getenv("PATH")<< std::endl;
+    //std::cout << getenv("PATH")<< std::endl;
     int command_index = -1;
     for (int i = 0; i < valid_commands.size(); i++)
     {
