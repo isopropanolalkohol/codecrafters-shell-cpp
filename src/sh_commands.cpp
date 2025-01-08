@@ -30,7 +30,7 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
   {
     if (commands[i].name == args[1])
     {
-      std::cout << commands[i].name << ": is a shell builtin" <<std::endl;
+      std::cout << commands[i].name << " is a shell builtin" <<std::endl;
       return SUCCESS;
     }
   }
