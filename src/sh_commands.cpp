@@ -44,6 +44,15 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
          break;
     }
   }
+  std::vector<command> commands = load_commands();
+  for (int i = 0; i < commands.size(); i++)
+  {
+    if (commands[i].name == args[1])
+    {
+      std::cout << commands[i].name << ": is a shell builtin" <<std::endl;
+      return SUCCESS;
+    }
+  }
   std::cout << args[1] << ": not found" << std::endl;
   return SUCCESS;
 }
