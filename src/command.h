@@ -6,7 +6,13 @@
 #include <iostream>
 #include <vector>
 
-class command;
+class command
+{
+    public:
+        command();
+        std::string name;
+        void exec();
+};
 std::vector<command> load_commands();
 
 

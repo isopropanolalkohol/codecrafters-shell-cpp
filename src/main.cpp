@@ -1,5 +1,5 @@
 #include <iostream>
-#include "command.cpp"
+#include "command.h"
 int main() {
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
