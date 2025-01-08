@@ -25,6 +25,15 @@ command sh_echo("echo", cmd_echo);
 
 COMMAND_RESULT cmd_type(std::vector<std::string> args)
 {
+  std::vector<command> commands = load_commands();
+  for (int i = 0; i < commands.size(); i++)
+  {
+    if (commands[i].name == args[1])
+    {
+      std::cout << commands[i].name << ": is a shell builtin" <<std::endl;
+      return SUCCESS;
+    }
+  }
   std::string env_p = std::getenv("PATH");
   std::string current_path = "";
   for (int i = 0; env_p[i] != '\0'; i++)
@@ -42,15 +51,6 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
       default:
          current_path += env_p[i];
          break;
-    }
-  }
-  std::vector<command> commands = load_commands();
-  for (int i = 0; i < commands.size(); i++)
-  {
-    if (commands[i].name == args[1])
-    {
-      std::cout << commands[i].name << ": is a shell builtin" <<std::endl;
-      return SUCCESS;
     }
   }
   std::cout << args[1] << ": not found" << std::endl;
