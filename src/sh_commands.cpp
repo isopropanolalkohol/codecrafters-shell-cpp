@@ -34,7 +34,7 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
       case ':':
         if (std::filesystem::exists(current_path + "/" + args[1]))
         {
-          std::cout << args[1] << " is " << current_path << std::endl;
+          std::cout << args[1] << " is " << current_path << '/' << args[1] << std::endl;
           return SUCCESS;
         }
          current_path = "";
