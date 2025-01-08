@@ -9,11 +9,10 @@
 class command
 {
     public:
-        command();
+        command(std::string cmd_name);
         std::string name;
-        void exec();
+        void exec(std::vector<std::string> args);
 };
-std::vector<command> load_commands();
 
 
 #endif //COMMAND_H

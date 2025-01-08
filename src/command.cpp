@@ -4,9 +4,7 @@
 
 #include "command.h"
 
-
-std::vector<command> load_commands()
+command::command(std::string cmd_name)
 {
-  std::vector<command> commands;
-  return commands;
+  name = cmd_name;
 }
