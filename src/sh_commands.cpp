@@ -43,7 +43,7 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
       default:
         current_path += env_p[i];
         current_dir_name += env_p[i];
-        if (current_dir_name == args[1] && env_p[i+1] == ':')
+        if (current_dir_name == args[1] && (env_p[i+1] == ':' || env_p[i+1] == '\0'))
         {
           std::cout << args[1] << " is " << current_path << std::endl;
           return SUCCESS;
