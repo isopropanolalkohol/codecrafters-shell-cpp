@@ -13,6 +13,7 @@ int main(int argc, char* argv[]) {
   int exit_code = 0;
   while (run)
   {
+    std::cout << getenv("PATH")<< std::endl;
     std::cout << "$ ";
 
     std::string input;
