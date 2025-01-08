@@ -8,12 +8,12 @@ int main(int argc, char* argv[]) {
   // Flush after every std::cout / std:cerr
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
-
+/*
   for (int i = 0; i < argc; i++)
   {
     std::cout << argv[i] << " ";
   }
-  std::cout << std::endl;
+  std::cout << std::endl;*/
   std::vector<command> valid_commands = load_commands();
   bool run = true;
   int exit_code = 0;
