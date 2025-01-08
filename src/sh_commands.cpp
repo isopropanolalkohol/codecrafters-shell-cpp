@@ -27,27 +27,21 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
 {
   std::string env_p = std::getenv("PATH");
   std::string current_path = "";
-  std::string current_dir_name = "";
   for (int i = 0; env_p[i] != '\0'; i++)
   {
     switch (env_p[i])
     {
-      case '/':
-        current_dir_name = "";
-        current_path += env_p[i];
-        break;
       case ':':
-         current_dir_name = "";
-         current_path = "";
-         break;
-      default:
-        current_path += env_p[i];
-        current_dir_name += env_p[i];
-        if (current_dir_name == args[1] && (env_p[i+1] == ':' || env_p[i+1] == '\0'))
+        if (std::filesystem::exists(current_path + "/" + args[1]))
         {
           std::cout << args[1] << " is " << current_path << std::endl;
           return SUCCESS;
         }
+         current_path = "";
+         break;
+      default:
+         current_path += env_p[i];
+         break;
     }
   }
   std::cout << args[1] << ": not found" << std::endl;

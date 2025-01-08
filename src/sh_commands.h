@@ -5,6 +5,7 @@
 #ifndef SH_COMMANDS_H
 #define SH_COMMANDS_H
 #include <vector>
+#include <filesystem>
 #include "command.h"
 
 COMMAND_RESULT cmd_exit(std::vector<std::string> args);
