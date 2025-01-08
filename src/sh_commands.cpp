@@ -30,11 +30,11 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
   {
     if (commands[i].name == args[1])
     {
-      std::cout << args[1] << " is a shell builtin." << std::endl;
+      std::cout << args[1] << " is a shell builtin" << std::endl;
       return SUCCESS;
     }
   }
-  std::cout << args[1] << ": not found." << std::endl;
+  std::cout << args[1] << ": not found" << std::endl;
   return SUCCESS;
 }
 command sh_type("type", cmd_type);
