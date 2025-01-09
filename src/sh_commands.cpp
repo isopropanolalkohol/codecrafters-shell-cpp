@@ -66,11 +66,11 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
   char* paths = strtok(env_p, ":");
   while (paths != nullptr)
   {
-    std::cout << paths << '\n';
     std::string current_path = paths;
     if (std::filesystem::exists(current_path + "/" + args[0]))
     {
-      
+      const char* path = (current_path + "/" + args[0]).c_str();
+      system(path);
     }
     paths = strtok(NULL, ":");
   }
