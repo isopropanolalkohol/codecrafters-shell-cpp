@@ -69,11 +69,14 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
     std::string current_path = paths;
     if (std::filesystem::exists(current_path + "/" + args[0]))
     {
+      std::cout << current_path + "/" + args[0] << "\n";
       const char* path = (current_path + "/" + args[0]).c_str();
       system(path);
+      return SUCCESS;
     }
     paths = strtok(NULL, ":");
   }
+  return ERROR;
 }
 command sh_try("try", cmd_try);
 
