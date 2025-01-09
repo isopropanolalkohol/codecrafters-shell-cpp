@@ -18,7 +18,6 @@ int main(int argc, char* argv[]) {
     std::string input;
     std::getline(std::cin, input);
     std::vector<std::string> args = tokenize(input);
-    //std::cout << getenv("PATH")<< std::endl;
     int command_index = -1;
     for (int i = 0; i < valid_commands.size(); i++)
     {
@@ -28,11 +27,7 @@ int main(int argc, char* argv[]) {
         break;
       }
     }
-    if (command_index == -1)
-    {
-      std::cout << args[0] << ": " << "command not found" << std::endl;
-    }
-    else
+    if (command_index != -1)
     {
       switch (valid_commands[command_index].exec(args))
       {
@@ -42,8 +37,15 @@ int main(int argc, char* argv[]) {
         case SUCCESS:
           break;
         case ERROR:
-          std::cout << "Error occurred" << std::endl;
+          std::cout << "Error occurred\n";
           break;
+      }
+    }
+    else
+    {
+      if (cmd_try(args) != SUCCESS)
+      {
+        std::cout << args[0] << ": " << "command not found\n";
       }
     }
   }

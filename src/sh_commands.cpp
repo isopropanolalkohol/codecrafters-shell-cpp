@@ -26,11 +26,11 @@ command sh_echo("echo", cmd_echo);
 COMMAND_RESULT cmd_type(std::vector<std::string> args)
 {
   std::vector<command> commands = load_commands();
-  for (int i = 0; i < commands.size(); i++)
+  for (auto & command : commands)
   {
-    if (commands[i].name == args[1])
+    if (command.name == args[1])
     {
-      std::cout << commands[i].name << " is a shell builtin" <<std::endl;
+      std::cout << command.name << " is a shell builtin\n";
       return SUCCESS;
     }
   }
@@ -43,7 +43,7 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
       case ':':
         if (std::filesystem::exists(current_path + "/" + args[1]))
         {
-          std::cout << args[1] << " is " << current_path << '/' << args[1] << std::endl;
+          std::cout << args[1] << " is " << current_path << '/' << args[1] << '\n';
           return SUCCESS;
         }
          current_path = "";
@@ -53,10 +53,29 @@ COMMAND_RESULT cmd_type(std::vector<std::string> args)
          break;
     }
   }
-  std::cout << args[1] << ": not found" << std::endl;
+  std::cout << args[1] << ": not found\n";
   return SUCCESS;
 }
 command sh_type("type", cmd_type);
+
+
+
+COMMAND_RESULT cmd_try(std::vector<std::string> args)
+{
+  char* env_p = std::getenv("PATH");
+  char* paths = strtok(env_p, ":");
+  while (paths != nullptr)
+  {
+    std::cout << paths << '\n';
+    std::string current_path = paths;
+    if (std::filesystem::exists(current_path + "/" + args[0]))
+    {
+      
+    }
+    paths = strtok(NULL, ":");
+  }
+}
+command sh_try("try", cmd_try);
 
 std::vector<command> load_commands()
 {

@@ -14,6 +14,7 @@ class command
 {
     public:
         command(std::string cmd_name, std::function<COMMAND_RESULT (std::vector<std::string>)> cmd_function);
+        command();
         std::string name;
         std::function<COMMAND_RESULT (std::vector<std::string>)> cmd_function;
         COMMAND_RESULT exec(std::vector<std::string> args);
