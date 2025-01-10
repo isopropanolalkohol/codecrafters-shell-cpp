@@ -16,9 +16,12 @@ std::vector<std::string> tokenize(std::string input)
   {
     if (curr == delimiter)
     {
+      while (curr == delimiter)
+      {
+        curr = input[index++];
+      }
       tokens.push_back(token);
       token.clear();
-      curr = input[index++];
     }
     else if (curr == sin_qu)
     {
