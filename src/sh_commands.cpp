@@ -69,13 +69,13 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
     std::string current_path = paths;
     if (std::filesystem::exists(current_path + "/" + args[0]))
     {
-      std::cout << args.size() << '\n';
+      //std::cout << args.size() << '\n';
       std::string ex_path = current_path + "/";
       for (auto arg : args)
       {
         ex_path += arg + " ";
       }
-      std::cout << "the command to be executed: " << ex_path << "\n";
+      //std::cout << "the command to be executed: " << ex_path << "\n";
       system(ex_path.c_str());
       return SUCCESS;
     }
