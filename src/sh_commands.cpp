@@ -70,6 +70,11 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
     if (std::filesystem::exists(current_path + "/" + args[0]))
     {
       std::string ex_path = current_path + "/" + args[0];
+      for (auto arg : args)
+      {
+        ex_path += " " + arg;
+      }
+      //std::cout << ex_path << "\n";
       system(ex_path.c_str());
       return SUCCESS;
     }
