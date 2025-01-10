@@ -85,11 +85,28 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
 }
 command sh_try("try", cmd_try);
 
+COMMAND_RESULT cmd_pwd(std::vector<std::string> args)
+{
+  if (args.size() != 1)
+  {
+    std::cout << "expected 0 arguments, got more.\n";
+  }
+  else
+  {
+    std::string pwd = std::filesystem::current_path().string();
+    std::cout << pwd << "\n";
+  }
+  return SUCCESS;
+}
+command sh_pwd("pwd", cmd_pwd);
+
+
 std::vector<command> load_commands()
 {
     std::vector<command> commands;
     commands.push_back(sh_exit);
     commands.push_back(sh_echo);
     commands.push_back(sh_type);
+    commands.push_back(sh_pwd);
     return commands;
 }
