@@ -6,6 +6,7 @@
 #define SH_COMMANDS_H
 #include <vector>
 #include <filesystem>
+#include <string>
 #include <cstring> //this shit is necessary even though my analyzer lists this as unnecessary import stupid piece of algorithm I need it in my .cpp file
 #include "command.h"
 COMMAND_RESULT cmd_exit(std::vector<std::string> args);
