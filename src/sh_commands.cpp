@@ -111,6 +111,7 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
     std::string user = std::getenv("USER");
     try
     {
+      std::cout << "/home/" + user << "\n";
       std::filesystem::current_path("/home/" + user);
     }
     catch (std::filesystem::filesystem_error e)
