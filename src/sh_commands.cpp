@@ -112,7 +112,7 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
     std::string home = std::getenv("HOME");
     try
     {
-      std::cout << home << "\n";
+      //std::cout << home << "\n";
       std::filesystem::current_path(home);
     }
     catch (std::filesystem::filesystem_error e)
