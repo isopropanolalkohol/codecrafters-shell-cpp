@@ -109,11 +109,11 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
   }
   if (args[1] == "~")
   {
-    std::string user = std::getenv("USER");
+    std::string home = std::getenv("HOME");
     try
     {
-      std::cout << "/home/" + user << "\n";
-      std::filesystem::current_path("/home/" + user);
+      std::cout << home << "\n";
+      std::filesystem::current_path(home);
     }
     catch (std::filesystem::filesystem_error e)
     {
