@@ -100,6 +100,27 @@ COMMAND_RESULT cmd_pwd(std::vector<std::string> args)
 }
 command sh_pwd("pwd", cmd_pwd);
 
+COMMAND_RESULT cmd_cd(std::vector <std::string> args)
+{
+  if (args.size() != 2)
+  {
+    std::cout << "expected 1 argument, got more.\n";
+  }
+  else
+  {
+    try
+    {
+      std::filesystem::current_path(args[1]);
+    }
+    catch (std::filesystem::filesystem_error e)
+    {
+      std::cout << e.what() << "\n";
+    }
+
+    return SUCCESS;
+  }
+}
+command sh_cd("cd", cmd_cd);
 
 std::vector<command> load_commands()
 {
@@ -108,5 +129,6 @@ std::vector<command> load_commands()
     commands.push_back(sh_echo);
     commands.push_back(sh_type);
     commands.push_back(sh_pwd);
+    commands.push_back(sh_cd);
     return commands;
 }
