@@ -105,8 +105,9 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
   if (args.size() != 2)
   {
     std::cout << "expected 1 argument, got more.\n";
+    return SUCCESS;
   }
-  else if (args[1] == "~")
+  if (args[1] == "~")
   {
     std::string user = std::getenv("USER");
     try
