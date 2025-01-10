@@ -106,6 +106,19 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
   {
     std::cout << "expected 1 argument, got more.\n";
   }
+  else if (args[1] == "~")
+  {
+    std::string user = std::getenv("USER");
+    try
+    {
+      std::filesystem::current_path("/home/" + user);
+    }
+    catch (std::filesystem::filesystem_error e)
+    {
+      std::cout << "cd: " << args[1] << ": No such file or directory\n"; //blub
+    }
+    return SUCCESS;
+  }
   else
   {
     try
