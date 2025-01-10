@@ -114,7 +114,7 @@ COMMAND_RESULT cmd_cd(std::vector <std::string> args)
     }
     catch (std::filesystem::filesystem_error e)
     {
-      std::cout << "cd: " << args[1] << ": No such file or directory\n";
+      std::cout << "cd: " << args[1] << ": No such file or directory\n"; //blub
     }
 
     return SUCCESS;
