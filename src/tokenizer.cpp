@@ -34,8 +34,11 @@ std::vector<std::string> tokenize(std::string input)
           {
             curr = input[index++];
           }
-          token.push_back(curr);
-          curr = input[index++];
+          else
+          {
+            token.push_back(curr);
+            curr = input[index++];
+          }
         }
         curr = input[index++];
         break;
