@@ -25,12 +25,13 @@ std::vector<std::string> tokenize(std::string input)
     }
     else if (curr == sin_qu)
     {
-      curr = input[index++];
+      //curr = input[index++];
       while (curr != sin_qu && curr != '\0')
       {
         token.push_back(curr);
         curr = input[index++];
       }
+      token.push_back(curr);
       curr = input[index++];
     }
     else
