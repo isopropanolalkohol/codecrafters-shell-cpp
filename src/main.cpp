@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
   std::vector<command> valid_commands = load_commands();
-  
+
   bool run = true;
   int exit_code = 0;
   while (run)
