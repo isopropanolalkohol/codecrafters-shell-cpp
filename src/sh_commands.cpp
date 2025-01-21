@@ -74,6 +74,7 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
       for (auto arg : args)
       {
         //now follows the most shit-crafted only to work code you've ever seen
+        /*
         int len = arg.size();
         for (int i = 0; i < len; i++)
         {
@@ -83,7 +84,7 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
             len += 1;
             i += 1;
           }
-        }
+        }*/
         ex_path += '\"' + arg + "\" ";
       }
       //ex_path = "\"" + ex_path + "\"";
