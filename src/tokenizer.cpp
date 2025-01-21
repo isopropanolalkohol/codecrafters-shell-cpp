@@ -10,11 +10,16 @@ std::vector<std::string> tokenize(std::string input)
   char delimiter = ' ';
   char sin_qu = '\'';
   char doub_qu = '\"';
+  char esc = '\\';
   char curr = input[0];
   int index = 1;
   std::string token;
   while (curr != '\0')
   {
+    if (curr == esc)
+    {
+      curr = input[index++];
+    }
     if (curr == delimiter)
     {
       while (curr == delimiter)
