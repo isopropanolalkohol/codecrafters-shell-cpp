@@ -16,10 +16,44 @@ std::vector<std::string> tokenize(std::string input)
   std::string token;
   while (curr != '\0')
   {
-    if (curr == esc)
+    switch (curr)
     {
-      curr = input[index++];
+      case ' ':
+        while (curr == delimiter)
+        {
+          curr = input[index++];
+        }
+        tokens.push_back(token);
+        token.clear();
+        break;
+      case '\'':
+        curr = input[index++];
+        while (curr != sin_qu && curr != '\0')
+        {
+        token.push_back(curr);
+        curr = input[index++];
+        }
+        curr = input[index++];
+        break;
+      case '\"':
+        curr = input[index++];
+        while (curr != doub_qu && curr != '\0')
+        {
+        token.push_back(curr);
+        curr = input[index++];
+        }
+        curr = input[index++];
+        break;
+      case '\\':
+        curr = input[index++];
+        token.push_back(curr);
+        curr = input[index++];
+        break;
+      default:
+        token.push_back(curr);
+        curr = input[index++];
     }
+    /*
     if (curr == delimiter)
     {
       while (curr == delimiter)
@@ -37,7 +71,6 @@ std::vector<std::string> tokenize(std::string input)
         token.push_back(curr);
         curr = input[index++];
       }
-      //token.push_back(curr);
       curr = input[index++];
     }
     else if (curr == doub_qu)
@@ -55,7 +88,7 @@ std::vector<std::string> tokenize(std::string input)
     {
       token.push_back(curr);
       curr = input[index++];
-    }
+    }*/
   }
   tokens.push_back(token);
   return tokens;
