@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
   std::vector<command> valid_commands = load_commands();
+  /*
   bool run = true;
   int exit_code = 0;
   while (run)
@@ -18,11 +19,6 @@ int main(int argc, char* argv[]) {
     std::string input;
     std::getline(std::cin, input);
     std::vector<std::string> args = tokenize(input);
-    /*
-    for (const auto& command : args)
-    {
-      std::cout << command << "\n";
-    }*/
     int command_index = -1;
     for (int i = 0; i < valid_commands.size(); i++)
     {
@@ -53,5 +49,17 @@ int main(int argc, char* argv[]) {
         std::cout << args[0] << ": " << "command not found\n";
       }
     }
+  }*/
+  std::string arg = "'/tmp/foo/\"f 56\"'";
+  int len = arg.size();
+  for (int i = 0; i < len; i++)
+  {
+    if (arg[i] == '\"')
+    {
+      arg.insert(i, "\\");
+      len += 1;
+      i += 1;
+    }
   }
+  std::cout << arg << std::endl;
 }

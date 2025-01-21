@@ -81,12 +81,13 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
           {
             arg.insert(i, "\\");
             len += 1;
+            i += 1;
           }
         }
         ex_path += '\"' + arg + "\" ";
       }
       //ex_path = "\"" + ex_path + "\"";
-      //std::cout << "the command to be executed: " << ex_path << "\n";
+      std::cout << "the command to be executed: " << ex_path << "\n";
       system(ex_path.c_str());
       return SUCCESS;
     }
