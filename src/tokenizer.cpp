@@ -9,6 +9,7 @@ std::vector<std::string> tokenize(std::string input)
   std::vector<std::string> tokens;
   char delimiter = ' ';
   char sin_qu = '\'';
+  char doub_qu = '\"';
   char curr = input[0];
   int index = 1;
   std::string token;
@@ -27,6 +28,17 @@ std::vector<std::string> tokenize(std::string input)
     {
       curr = input[index++];
       while (curr != sin_qu && curr != '\0')
+      {
+        token.push_back(curr);
+        curr = input[index++];
+      }
+      //token.push_back(curr);
+      curr = input[index++];
+    }
+    else if (curr == doub_qu)
+    {
+      curr = input[index++];
+      while (curr != doub_qu && curr != '\0')
       {
         token.push_back(curr);
         curr = input[index++];
