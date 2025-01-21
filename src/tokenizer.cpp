@@ -30,8 +30,12 @@ std::vector<std::string> tokenize(std::string input)
         curr = input[index++];
         while (curr != sin_qu && curr != '\0')
         {
-        token.push_back(curr);
-        curr = input[index++];
+          if (curr == doub_qu)
+          {
+            curr = input[index++];
+          }
+          token.push_back(curr);
+          curr = input[index++];
         }
         curr = input[index++];
         break;
