@@ -84,7 +84,7 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
             i += 1;
           }
         }
-        //ex_path += '\'' + arg + "\' ";
+        ex_path += '\"' + arg + "\" ";
       }
       //ex_path = "\"" + ex_path + "\"";
       //std::cout << "the command to be executed: " << ex_path << "\n";
