@@ -44,7 +44,7 @@ std::vector<std::string> tokenize(std::string input)
             curr = input[index++];
             if (curr == '"' || curr == '$' || curr == '\\' || curr == '\n')
             {
-              token.push_back('\\');
+              token.push_back(curr);
               curr = input[index++];
             }
           }
