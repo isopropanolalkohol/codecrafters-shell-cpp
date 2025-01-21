@@ -30,8 +30,20 @@ std::vector<std::string> tokenize(std::string input)
         curr = input[index++];
         while (curr != sin_qu && curr != '\0')
         {
-          token.push_back(curr);
-          curr = input[index++];
+          if (curr == esc)
+          {
+            curr = input[index++];
+            if (curr == '"' || curr == '$' || curr == '\\' || curr == '\n')
+            {
+              token.push_back(curr);
+              curr = input[index++];
+            }
+          }
+          else
+          {
+            token.push_back(curr);
+            curr = input[index++];
+          }
         }
         curr = input[index++];
         break;
