@@ -30,7 +30,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           break;
         case '\"':
           j++;
-          while (arg[j] != '\"' && j < arg.size() - 1)
+          while (arg[j] != '\"' && j < arg.size() - 2)
           {
             if (arg[j] == '\\')
             {
