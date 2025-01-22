@@ -17,9 +17,15 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   {
     std::string arg = args[i];
     int len = arg.size();
+    int qu_count = 0;
+    //std::cout << arg << std::endl;
     for (int j = 0; j < len - 1; j++)
     {
-      if ( arg[j] == '\\' && (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"'))
+      if (arg[j] == '\"')
+      {
+        qu_count++;
+      }
+      if ( arg[j] == '\\' && (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"') && qu_count % 2 == 1)
       {
         arg.erase(j, 1);
         len--;
