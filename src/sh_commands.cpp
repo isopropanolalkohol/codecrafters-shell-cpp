@@ -16,6 +16,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   for (int i = 1; i < args.size(); i++)
   {
     std::string arg = args[i];
+    bool exit_escape = false;
     //std::cout << "Arg:" << arg << std::endl;
     for (int j = 0; j < arg.size() - 1; j++)
     {
@@ -33,10 +34,12 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           j++;
           while (arg[j] != '\"' && j < arg.size() - 1)
           {
+            exit_escape = false;
             if (arg[j] == '\\')
             {
               j++;
               std::cout << arg[j];
+              exit_escape = true;
             }
             else
             {
@@ -47,15 +50,17 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           //std::cout << "The char last pointed to: " << arg[j];
           break;
         case '\\':
+          exit_escape = false;
           j++;
           std::cout << arg[j];
+          exit_escape = true;
           break;
         default:
           std::cout << arg[j];
           break;
       }
     }
-    if (arg[arg.size() - 1] == '\"' && arg[arg.size() - 2] == '\\')
+    if (arg[arg.size() - 1] == '\"' && arg[arg.size() - 2] == '\\'  && !exit_escape)
     {
       std::cout << "\"";
     }
