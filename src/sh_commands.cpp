@@ -41,6 +41,10 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             {
               std::cout << arg[j];
             }
+            if (j == arg.size() - 1)
+            {
+              break;
+            }
             j++;
           }
           break;
