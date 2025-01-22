@@ -111,21 +111,10 @@ COMMAND_RESULT cmd_try(std::vector<std::string> args)
       std::string ex_path = "";//current_path + "/";
       for (auto arg : args)
       {
-        //now follows the most shit-crafted only to work code you've ever seen
-        int len = arg.size();/*
-        for (int i = 0; i < len; i++)
-        {
-          if (arg[i] == '\"' || arg[i] == '\\'|| arg[i] == '\''  || arg[i] == '\n')
-          {
-            arg.insert(i, "\\");
-            len += 1;
-            i += 1;
-          }
-        }*/
-        ex_path += "\'" + arg + "\' ";
+        ex_path += arg + " ";
       }
       //ex_path = "\'" + ex_path + "\'";
-      //std::cout << "the command to be executed: " << ex_path << "\n";
+      std::cout << "the command to be executed: " << ex_path << "\n";
       system(ex_path.c_str());
       return SUCCESS;
     }
