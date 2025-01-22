@@ -20,11 +20,6 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
     //std::cout << "Arg:" << arg << std::endl;
     for (int j = 0; j < arg.size(); j++)
     {
-      if (came_out_of_quotes_flag)
-      {
-        j--;
-        came_out_of_quotes_flag = false;
-      }
       switch (arg[j])
       {
         case '\'':
@@ -35,6 +30,11 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           }
           break;
         case '\"':
+          if (came_out_of_quotes_flag)
+          {
+            came_out_of_quotes_flag = false;
+            break;
+          }
           j++;
           while (arg[j] != '\"' && j < arg.size() - 1)
           {
