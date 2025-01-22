@@ -21,7 +21,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
     //std::cout << arg << std::endl;
     for (int j = 0; j < len - 1; j++)
     {
-      if (arg[j] == '\"')
+      if (arg[j] == '\"' && arg[j - 1] != '\\')
       {
         qu_count++;
       }
