@@ -41,11 +41,11 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             {
               std::cout << arg[j];
             }
+            j++;
             if (j == arg.size() - 1)
             {
               break;
             }
-            j++;
           }
           break;
         case '\\':
