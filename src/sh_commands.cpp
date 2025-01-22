@@ -16,8 +16,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   for (int i = 1; i < args.size(); i++)
   {
     std::string arg = args[i];
-    int doub_quote_count = 0;
-    std::cout << "Arg:" << arg << std::endl;
+    //std::cout << "Arg:" << arg << std::endl;
     for (int j = 0; j < arg.size(); j++)
     {
       switch (arg[j])
