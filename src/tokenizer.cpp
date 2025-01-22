@@ -42,22 +42,10 @@ std::vector<std::string> tokenize(std::string input)
         curr = input[index++];
         while (curr != doub_qu && curr != '\0')
         {
-          if (curr == esc)
-          {
-            curr = input[index++];
-            if (curr == '"' || curr == '$' || curr == '\\' || curr == '\n')
-            {
-              token.push_back(curr);
-              curr = input[index++];
-            }
-          }
-          else
-          {
-            token.push_back(curr);
-            curr = input[index++];
-          }
+          token.push_back(curr);
+          curr = input[index++];
         }
-      token.push_back(doub_qu);
+        token.push_back(doub_qu);
         curr = input[index++];
         break;
       case '\\':
