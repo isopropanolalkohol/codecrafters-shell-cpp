@@ -18,14 +18,14 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
     std::string arg = args[i];
     int len = arg.size();
     for (int j = 0; j < len; j++)
-    {
+    {/*
       if (arg[j] == '\n' || arg[j] == '\\' || arg[j] == '\'' || arg[j] == '\"')
       {
         arg.insert(j, "\\");
         len++;
         j++;
       }
-    }
+    }*/
     std::cout << arg << " ";
   }
   std::cout << std::endl;
