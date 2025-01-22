@@ -16,36 +16,43 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   for (int i = 1; i < args.size(); i++)
   {
     std::string arg = args[i];
-    int len = arg.size();
-    int qu_count = 0;
-    //std::cout << arg << std::endl;
-    for (int j = 0; j < len - 1; j++)
+    int doub_quote_count = 0;
+    for (int j = 0; j < arg.size(); j++)
     {
-      if (arg[j] == '\"' && arg[j - 1] != '\\')
+      switch (arg[j])
       {
-        qu_count++;
-      }
-      if ( arg[j] == '\\' && (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"') && qu_count % 2 == 1)
-      {
-        arg.erase(j, 1);
-        len--;
-        j--;
+        case '\'':
+          j++;
+          while (arg[j] != '\'')
+          {
+            std::cout << arg[j];
+          }
+          break;
+        case '\"':
+          j++;
+          while (arg[j] != '\"')
+          {
+            if (arg[j] == '\\')
+            {
+              j++;
+              std::cout << arg[j];
+            }
+            else
+            {
+              std::cout << arg[j];
+            }
+            j++;
+          }
+          break;
+        case '\\':
+          j++;
+          std::cout << arg[j];
+          break;
+        default:
+          std::cout << arg[j];
+          break;
       }
     }
-    switch (arg[0])
-    {
-      case '\'':
-        arg.erase(0, 1);
-        arg.erase(arg.size() - 1, 1);
-        break;
-      case '\"':
-        arg.erase(0, 1);
-        arg.erase(arg.size() - 1, 1);
-        break;
-      default:
-        break;
-    }
-    std::cout << arg << " ";
   }
   std::cout << std::endl;
   return SUCCESS;
