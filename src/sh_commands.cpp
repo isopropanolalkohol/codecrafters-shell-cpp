@@ -17,6 +17,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   {
     std::string arg = args[i];
     int doub_quote_count = 0;
+    std::cout << "Arg:" << arg << std::endl;
     for (int j = 0; j < arg.size(); j++)
     {
       switch (arg[j])
@@ -30,7 +31,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           break;
         case '\"':
           j++;
-          while (arg[j] != '\"')
+          while (arg[j] != '\"' && arg[j] != '\0')
           {
             if (arg[j] == '\\')
             {

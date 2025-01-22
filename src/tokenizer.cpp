@@ -48,11 +48,12 @@ std::vector<std::string> tokenize(std::string input)
         token.push_back(doub_qu);
         curr = input[index++];
         break;
+      /*
       case '\\':
         curr = input[index++];
         token.push_back(curr);
         curr = input[index++];
-      break;
+      break;*/
       default:
         token.push_back(curr);
         curr = input[index++];
