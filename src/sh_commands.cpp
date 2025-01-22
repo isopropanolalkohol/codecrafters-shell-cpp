@@ -12,9 +12,21 @@ command sh_exit("exit", cmd_exit);
 
 COMMAND_RESULT cmd_echo(std::vector<std::string> args)
 {
+
   for (int i = 1; i < args.size(); i++)
   {
-    std::cout << args[i] << " ";
+    std::string arg = args[i];
+    int len = arg.size();
+    for (int j = 0; j < len; j++)
+    {
+      if (arg[j] == '\n' || arg[j] == '\\' || arg[j] == '\'' || arg[j] == '\"')
+      {
+        arg.insert(j, "\\");
+        len++;
+        j++;
+      }
+    }
+    std::cout << arg << " ";
   }
   std::cout << std::endl;
   return SUCCESS;
