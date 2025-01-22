@@ -32,6 +32,19 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
         j--;
       }
     }
+    switch (arg[0])
+    {
+      case '\'':
+        arg.erase(0, 1);
+        arg.erase(arg.size() - 1, 1);
+        break;
+      case '\"':
+        arg.erase(0, 1);
+        arg.erase(arg.size() - 1, 1);
+        break;
+      default:
+        break;
+    }
     std::cout << arg << " ";
   }
   std::cout << std::endl;
