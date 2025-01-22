@@ -58,11 +58,6 @@ std::vector<std::string> tokenize(std::string input)
         }
         curr = input[index++];
         break;
-      case '\\':
-        curr = input[index++];
-        token.push_back(curr);
-        curr = input[index++];
-        break;
       default:
         token.push_back(curr);
         curr = input[index++];
