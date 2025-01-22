@@ -15,16 +15,10 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
 
   for (int i = 1; i < args.size(); i++)
   {
-    bool came_out_of_quotes_flag = false;
     std::string arg = args[i];
     //std::cout << "Arg:" << arg << std::endl;
-    for (int j = 0; j < arg.size(); j++)
+    for (int j = 0; j < arg.size() - 1; j++)
     {
-      if (came_out_of_quotes_flag)
-      {
-        j--;
-        came_out_of_quotes_flag = false;
-      }
       switch (arg[j])
       {
         case '\'':
@@ -34,7 +28,6 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             std::cout << arg[j];
             j++;
           }
-          came_out_of_quotes_flag = true;
           break;
         case '\"':
           j++;
@@ -51,7 +44,6 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             }
             j++;
           }
-          came_out_of_quotes_flag = true;
           //std::cout << "The char last pointed to: " << arg[j];
           break;
         case '\\':
@@ -62,6 +54,14 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
           std::cout << arg[j];
           break;
       }
+    }
+    if (arg[arg.size() - 1] == '\"' && arg[arg.size() - 2] == '\\')
+    {
+      std::cout << "\"";
+    }
+    else if (arg[arg.size() - 1] != '\"' && arg[arg.size() - 1] != '\'')
+    {
+      std::cout << arg[arg.size() - 1];
     }
   }
   std::cout << std::endl;
