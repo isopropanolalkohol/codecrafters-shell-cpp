@@ -26,7 +26,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
         j--;
       }
     }
-    std::cout << arg;
+    std::cout << arg << " ";
   }
   std::cout << std::endl;
   return SUCCESS;

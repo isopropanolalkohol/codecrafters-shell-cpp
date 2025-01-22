@@ -21,10 +21,6 @@ std::vector<std::string> tokenize(std::string input)
       case ' ':
         while (curr == delimiter)
         {
-          if (tokens.size() > 1)
-          {
-            token.push_back(' ');
-          }
           curr = input[index++];
         }
         tokens.push_back(token);
@@ -61,8 +57,6 @@ std::vector<std::string> tokenize(std::string input)
           }
         }
         curr = input[index++];
-        tokens.push_back(token);
-        token.clear();
         break;
       case '\\':
         curr = input[index++];
