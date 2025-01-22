@@ -16,16 +16,16 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
   for (int i = 1; i < args.size(); i++)
   {
     std::string arg = args[i];
-    /*int len = arg.size();
-    for (int j = 0; j < len; j++)
+    int len = arg.size();
+    for (int j = 0; j < len - 1; j++)
     {
-      if (arg[j] == '\n' || arg[j] == '\\' || arg[j] == '\'' || arg[j] == '\"')
+      if ( arg[j] == '\\'&& (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"'))
       {
-        arg.insert(j, "\\");
-        len++;
-        j++;
+        arg.erase(j);
+        len--;
+        j--;
       }
-    }*/
+    }
     std::cout << arg << " ";
   }
   std::cout << std::endl;
