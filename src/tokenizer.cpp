@@ -27,12 +27,14 @@ std::vector<std::string> tokenize(std::string input)
         token.clear();
         break;
       case '\'':
+        token.push_back(sin_qu);
         curr = input[index++];
         while (curr != sin_qu && curr != '\0')
         {
           token.push_back(curr);
           curr = input[index++];
         }
+      token.push_back(sin_qu);
         curr = input[index++];
         break;
       case '\"':
