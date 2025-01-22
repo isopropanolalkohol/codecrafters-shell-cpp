@@ -45,7 +45,6 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             }
             j++;
           }
-        j++;
           break;
         case '\\':
           j++;
