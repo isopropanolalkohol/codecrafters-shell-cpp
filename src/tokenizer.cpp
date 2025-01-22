@@ -40,7 +40,7 @@ std::vector<std::string> tokenize(std::string input)
       case '\"':
         curr = input[index++];
         while (curr != doub_qu && curr != '\0')
-        {/*
+        {
           if (curr == esc)
           {
             curr = input[index++];
@@ -51,10 +51,10 @@ std::vector<std::string> tokenize(std::string input)
             }
           }
           else
-          {*/
+          {
             token.push_back(curr);
             curr = input[index++];
-          /*}*/
+          }
         }
         curr = input[index++];
         break;
