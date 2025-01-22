@@ -19,9 +19,9 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
     int len = arg.size();
     for (int j = 0; j < len - 1; j++)
     {
-      if ( arg[j] == '\\'&& (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"'))
+      if ( arg[j] == '\\' && (arg[j+1] == '\n' || arg[j+1] == '\\' || arg[j+1] == '\'' || arg[j+1] == '\"'))
       {
-        arg.erase(j-1, 1);
+        arg.erase(j, 1);
         len--;
         j--;
       }
