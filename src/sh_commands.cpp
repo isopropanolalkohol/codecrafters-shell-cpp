@@ -37,6 +37,8 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             {
               j++;
               std::cout << arg[j];
+              j++;
+              std::cout << arg[j];
             }
             else
             {
@@ -44,6 +46,7 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             }
             j++;
           }
+        j++;
           break;
         case '\\':
           j++;
