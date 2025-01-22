@@ -15,10 +15,12 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
 
   for (int i = 1; i < args.size(); i++)
   {
+    bool came_out_of_quotes_flag = false;
     std::string arg = args[i];
     //std::cout << "Arg:" << arg << std::endl;
     for (int j = 0; j < arg.size(); j++)
     {
+      if (came_out_of_quotes_flag){j--;}
       switch (arg[j])
       {
         case '\'':
@@ -43,6 +45,8 @@ COMMAND_RESULT cmd_echo(std::vector<std::string> args)
             }
             j++;
           }
+          came_out_of_quotes_flag = true;
+          //std::cout << "The char last pointed to: " << arg[j];
           break;
         case '\\':
           j++;
