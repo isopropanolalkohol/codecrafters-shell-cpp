@@ -57,7 +57,8 @@ std::vector<std::string> tokenize(std::string input)
           }
         }
         curr = input[index++];
-      token.clear();
+        tokens.push_back(token);
+        token.clear();
         break;
       case '\\':
         curr = input[index++];
