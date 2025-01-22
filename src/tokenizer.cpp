@@ -27,20 +27,20 @@ std::vector<std::string> tokenize(std::string input)
         token.clear();
         break;
       case '\'':
-        token.push_back(sin_qu);
+        //token.push_back(sin_qu);
         curr = input[index++];
         while (curr != sin_qu && curr != '\0')
         {
           token.push_back(curr);
           curr = input[index++];
         }
-      token.push_back(sin_qu);
+      //token.push_back(sin_qu);
         curr = input[index++];
         break;
       case '\"':
         curr = input[index++];
         while (curr != doub_qu && curr != '\0')
-        {
+        {/*
           if (curr == esc)
           {
             curr = input[index++];
@@ -51,10 +51,10 @@ std::vector<std::string> tokenize(std::string input)
             }
           }
           else
-          {
+          {*/
             token.push_back(curr);
             curr = input[index++];
-          }
+          /*}*/
         }
         curr = input[index++];
         break;
